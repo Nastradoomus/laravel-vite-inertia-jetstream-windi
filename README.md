@@ -1,4 +1,9 @@
-# 🧩 Laravel 8, Inertia, Jetstream, Vite, Windi <br /> <br /> ❌ Mix, TailWindCSS
+# 🧩 Laravel 8, Inertia, Jetstream, Vite, Windi
+
+## ❌ Mix, TailWindCSS
+
+<br />
+<br />
 
 ## In honour of the following contributors:
 
