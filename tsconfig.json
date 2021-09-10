@@ -33,8 +33,7 @@
         "resources/scripts/shims-tsx.d.ts",
         "resources/scripts/shims-vue.d.ts",
         "resources/scripts/shims-window.d.ts",
-        "resources/scripts/Jetstream/**/*.vue",
-        "resources/scripts/Pages/**/*.vue",
+        "resources/scripts/**/*.vue",
         "resources/scripts/**/*",
         "resources/scripts/**/*.ts"
     ],

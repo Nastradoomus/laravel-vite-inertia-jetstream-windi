@@ -10,5 +10,6 @@ php:
 js:
   finder:
     not-name:
-      - webpack.mix.js
+      - windi.config.ts
+      - vite.config.ts
 css: true

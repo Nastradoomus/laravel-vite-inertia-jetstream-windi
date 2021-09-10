@@ -1,5 +1,5 @@
 <template>
-    <AppLayout>
+    <app-layout title="Profile">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Profile
@@ -9,58 +9,56 @@
         <div>
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
                 <div v-if="$page.props.jetstream.canUpdateProfileInformation">
-                    <UpdateProfileInformationForm :user="$page.props.user" />
+                    <update-profile-information-form :user="$page.props.user" />
 
-                    <SectionBorder />
+                    <jet-section-border />
                 </div>
 
                 <div v-if="$page.props.jetstream.canUpdatePassword">
-                    <UpdatePasswordForm class="mt-10 sm:mt-0" />
+                    <update-password-form class="mt-10 sm:mt-0" />
 
-                    <SectionBorder />
+                    <jet-section-border />
                 </div>
 
                 <div v-if="$page.props.jetstream.canManageTwoFactorAuthentication">
-                    <TwoFactorAuthenticationForm class="mt-10 sm:mt-0" />
+                    <two-factor-authentication-form class="mt-10 sm:mt-0" />
 
-                    <SectionBorder />
+                    <jet-section-border />
                 </div>
 
-                <LogoutOtherBrowserSessionsForm :sessions="sessions" class="mt-10 sm:mt-0" />
+                <logout-other-browser-sessions-form :sessions="sessions" class="mt-10 sm:mt-0" />
 
                 <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
-                    <SectionBorder />
+                    <jet-section-border />
 
-                    <DeleteUserForm class="mt-10 sm:mt-0" />
+                    <delete-user-form class="mt-10 sm:mt-0" />
                 </template>
             </div>
         </div>
-    </AppLayout>
+    </app-layout>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
-import AppLayout from "@/Layouts/AppLayout.vue";
-import DeleteUserForm from "./DeleteUserForm.vue";
-import SectionBorder from "@/Jetstream/Elements/Section/SectionBorder.vue";
-import LogoutOtherBrowserSessionsForm from "./LogoutOtherBrowserSessionsForm.vue";
-import TwoFactorAuthenticationForm from "./TwoFactorAuthenticationForm.vue";
-import UpdatePasswordForm from "./UpdatePasswordForm.vue";
-import UpdateProfileInformationForm from "./UpdateProfileInformationForm.vue";
+<script>
+    import { defineComponent } from 'vue'
+    import AppLayout from '@/Layouts/AppLayout.vue'
+    import DeleteUserForm from '@/Pages/Profile/Partials/DeleteUserForm.vue'
+    import JetSectionBorder from '@/Jetstream/SectionBorder.vue'
+    import LogoutOtherBrowserSessionsForm from '@/Pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue'
+    import TwoFactorAuthenticationForm from '@/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue'
+    import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm.vue'
+    import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue'
 
-export default defineComponent({
-    name : "Show",
+    export default defineComponent({
+        props: ['sessions'],
 
-    props : ["sessions"],
-
-    components : {
-        AppLayout,
-        DeleteUserForm,
-        SectionBorder,
-        LogoutOtherBrowserSessionsForm,
-        TwoFactorAuthenticationForm,
-        UpdatePasswordForm,
-        UpdateProfileInformationForm,
-    },
-});
+        components: {
+            AppLayout,
+            DeleteUserForm,
+            JetSectionBorder,
+            LogoutOtherBrowserSessionsForm,
+            TwoFactorAuthenticationForm,
+            UpdatePasswordForm,
+            UpdateProfileInformationForm,
+        },
+    })
 </script>
