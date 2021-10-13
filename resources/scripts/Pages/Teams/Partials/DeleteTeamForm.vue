@@ -1,3 +1,37 @@
+<script setup lang="ts">
+import { ref, reactive, toRefs } from "vue"
+import { Inertia } from "@inertiajs/inertia"
+import JetActionSection from "@/Jetstream/ActionSection.vue"
+import JetConfirmationModal from "@/Jetstream/ConfirmationModal.vue"
+import JetDangerButton from "@/Jetstream/DangerButton.vue"
+import JetSecondaryButton from "@/Jetstream/SecondaryButton.vue"
+import { Router } from "@inertiajs/inertia/types/router"
+
+interface Form {
+  form(): {
+    processing: any
+    delete(route: any, target: any): void
+  }
+}
+
+const props = defineProps(["team"])
+
+const { team } = toRefs(props)
+
+const confirmingTeamDeletion = ref(false)
+const deleting = ref(false)
+
+const form = reactive((Inertia as Router & Form).form())
+function confirmTeamDeletion() {
+  confirmingTeamDeletion.value = true
+}
+
+function deleteTeam() {
+  form.delete(route("teams.destroy", team.value), {
+    errorBag: "deleteTeam"
+  })
+}
+</script>
 <template>
   <jet-action-section>
     <template #title> Delete Team </template>
@@ -47,43 +81,3 @@
     </template>
   </jet-action-section>
 </template>
-
-<script>
-import { defineComponent } from "vue"
-import JetActionSection from "@/Jetstream/ActionSection.vue"
-import JetConfirmationModal from "@/Jetstream/ConfirmationModal.vue"
-import JetDangerButton from "@/Jetstream/DangerButton.vue"
-import JetSecondaryButton from "@/Jetstream/SecondaryButton.vue"
-
-export default defineComponent({
-  data() {
-    return {
-      confirmingTeamDeletion: false,
-      deleting: false,
-
-      form: this.$inertia.form()
-    }
-  },
-  methods: {
-    confirmTeamDeletion() {
-      this.confirmingTeamDeletion = true
-    },
-
-    deleteTeam() {
-      this.form.delete(route("teams.destroy", this.team), {
-        errorBag: "deleteTeam"
-      })
-    }
-  },
-  props: ["team"],
-  setup() {
-    return {
-      defineComponent,
-      JetActionSection,
-      JetConfirmationModal,
-      JetDangerButton,
-      JetSecondaryButton
-    }
-  }
-})
-</script>

@@ -1,3 +1,12 @@
+<script setup>
+import AppLayout from "@/Layouts/AppLayout.vue"
+import DeleteTeamForm from "@/Pages/Teams/Partials/DeleteTeamForm.vue"
+import JetSectionBorder from "@/Jetstream/SectionBorder.vue"
+import TeamMemberManager from "@/Pages/Teams/Partials/TeamMemberManager.vue"
+import UpdateTeamNameForm from "@/Pages/Teams/Partials/UpdateTeamNameForm.vue"
+
+defineProps(["team", "availableRoles", "permissions"])
+</script>
 <template>
   <app-layout title="Team Settings">
     <template #header>
@@ -26,14 +35,3 @@
     </div>
   </app-layout>
 </template>
-
-<script setup>
-import { defineComponent } from "vue"
-import AppLayout from "@/Layouts/AppLayout.vue"
-import DeleteTeamForm from "@/Pages/Teams/Partials/DeleteTeamForm.vue"
-import JetSectionBorder from "@/Jetstream/SectionBorder.vue"
-import TeamMemberManager from "@/Pages/Teams/Partials/TeamMemberManager.vue"
-import UpdateTeamNameForm from "@/Pages/Teams/Partials/UpdateTeamNameForm.vue"
-
-defineProps(["team", "availableRoles", "permissions"])
-</script>
