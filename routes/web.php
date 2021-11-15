@@ -1,29 +1,42 @@
 <?php
 
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::middleware(["auth:sanctum", "verified"])
+    ->get("/dashboard", function () {
+        return Inertia::render("Dashboard");
+    })
+    ->name("dashboard");
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+Route::middleware(["auth:sanctum", "verified"])
+    ->prefix("restaurant")
+    ->group(base_path("routes/service/restaurant.php"));
+
+Route::middleware(["auth:sanctum", "verified"])
+    ->prefix("cafe")
+    ->group(base_path("routes/service/cafe.php"));
+
+Route::middleware(["auth:sanctum", "verified"])
+    ->prefix("portions")
+    ->group(base_path("routes/service/portions.php"));
+
+Route::middleware(["auth:sanctum", "verified"])
+    ->prefix("servicehours")
+    ->group(base_path("routes/service/servicehours.php"));
+
+Route::middleware(["auth:sanctum", "verified"])
+    ->prefix("defaults")
+    ->group(base_path("routes/service/defaults.php"));
+
+
+Route::get("/", function () {
+    return Inertia::render("Auth/Login", ["canResetPassword" => true]);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+
+/*
+Route::get("/", function () {
+    return Inertia::render("Auth/Register");
+});
+*/

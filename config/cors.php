@@ -15,20 +15,26 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    /*
+    header("Access-Control-Allow-Origin: https://sibbe.fi");
+    header("Access-Control-Allow-Methods: *");
+    header("Access-Control-Allow-Headers: *");
+    */
 
-    'allowed_methods' => ['*'],
+    "paths" => ["api/*", "sanctum/csrf-cookie"],
 
-    'allowed_origins' => ['*'],
+    "allowed_methods" => ["*"],
 
-    'allowed_origins_patterns' => [],
+    "allowed_origins" => [env("CORS_URL", "")],
 
-    'allowed_headers' => ['*'],
+    "allowed_origins_patterns" => [],
 
-    'exposed_headers' => [],
+    "allowed_headers" => ["*"],
 
-    'max_age' => 0,
+    "exposed_headers" => [],
 
-    'supports_credentials' => false,
+    "max_age" => 0,
+
+    "supports_credentials" => false,
 
 ];

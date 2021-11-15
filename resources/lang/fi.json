@@ -1,0 +1,8 @@
+{
+  "The provided password does not match your current password.": "Syötetty salasana ei vastaa nykyistä salasanaasi.",
+  "The :attribute must be at least :min characters.": "Kentän :attribute arvon tulee olla vähintään :min merkkiä.",
+  "cafe": "kahvila",
+  "Cafe": "Kahvila",
+  "restaurant": "ravintola",
+  "Restaurant": "Ravintola"
+}

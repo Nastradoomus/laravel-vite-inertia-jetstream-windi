@@ -2,7 +2,7 @@
 
 return [
 
-    /*
+	/*
     |--------------------------------------------------------------------------
     | Default Mailer
     |--------------------------------------------------------------------------
@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'smtp'),
+	'default' => env('MAIL_MAILER', 'smtp'),
 
-    /*
+	/*
     |--------------------------------------------------------------------------
     | Mailer Configurations
     |--------------------------------------------------------------------------
@@ -33,54 +33,54 @@ return [
     |
     */
 
-    'mailers' => [
-        'smtp' => [
-            'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
-            'timeout' => null,
-            'auth_mode' => null,
-        ],
+	'mailers' => [
+		'smtp' => [
+			'transport' => 'smtp',
+			'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+			'port' => env('MAIL_PORT', 587),
+			'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+			'username' => env('MAIL_USERNAME'),
+			'password' => env('MAIL_PASSWORD'),
+			'timeout' => null,
+			'auth_mode' => null,
+		],
 
-        'ses' => [
-            'transport' => 'ses',
-        ],
+		'ses' => [
+			'transport' => 'ses',
+		],
 
-        'mailgun' => [
-            'transport' => 'mailgun',
-        ],
+		'mailgun' => [
+			'transport' => 'mailgun',
+		],
 
-        'postmark' => [
-            'transport' => 'postmark',
-        ],
+		'postmark' => [
+			'transport' => 'postmark',
+		],
 
-        'sendmail' => [
-            'transport' => 'sendmail',
-            'path' => '/usr/sbin/sendmail -bs',
-        ],
+		'sendmail' => [
+			'transport' => 'sendmail',
+			'path' => '/usr/sbin/sendmail -bs',
+		],
 
-        'log' => [
-            'transport' => 'log',
-            'channel' => env('MAIL_LOG_CHANNEL'),
-        ],
+		'log' => [
+			'transport' => 'log',
+			'channel' => env('MAIL_LOG_CHANNEL'),
+		],
 
-        'array' => [
-            'transport' => 'array',
-        ],
+		'array' => [
+			'transport' => 'array',
+		],
 
-        'failover' => [
-            'transport' => 'failover',
-            'mailers' => [
-                'smtp',
-                'log',
-            ],
-        ],
-    ],
+		'failover' => [
+			'transport' => 'failover',
+			'mailers' => [
+				'smtp',
+				'log',
+			],
+		],
+	],
 
-    /*
+	/*
     |--------------------------------------------------------------------------
     | Global "From" Address
     |--------------------------------------------------------------------------
@@ -91,12 +91,28 @@ return [
     |
     */
 
-    'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
-    ],
+	"from" => [
+		"address" => env("MAIL_FROM_ADDRESS", ""),
+		"name" => env("MAIL_FROM_NAME", ""),
+	],
 
-    /*
+	/*
+    |--------------------------------------------------------------------------
+    | Global "to" Address
+    |--------------------------------------------------------------------------
+    |
+    | You may wish for all e-mails sent by your application to be sent to
+    | the same address. Here, you may specify a name and address that is
+    | used globally for all e-mails that are sent by your application.
+    |
+    */
+
+	"to" => [
+		"address" => env("MAIL_TO_ADDRESS", ""),
+		"name" => env("MAIL_NAME", ""),
+	],
+
+	/*
     |--------------------------------------------------------------------------
     | Markdown Mail Settings
     |--------------------------------------------------------------------------
@@ -107,12 +123,12 @@ return [
     |
     */
 
-    'markdown' => [
-        'theme' => 'default',
+	'markdown' => [
+		'theme' => 'default',
 
-        'paths' => [
-            resource_path('views/vendor/mail'),
-        ],
-    ],
+		'paths' => [
+			resource_path('views/vendor/mail'),
+		],
+	],
 
 ];
